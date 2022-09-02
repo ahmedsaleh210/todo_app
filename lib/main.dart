@@ -11,7 +11,7 @@ import 'package:todo_app/shared/style/themes.dart';
 
 import 'layout/cubit/cubit.dart';
 import 'layout/cubit/states.dart';
-
+//test
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
