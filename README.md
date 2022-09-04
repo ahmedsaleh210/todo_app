@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-Todo App using Firebase.
+Todo app using Firebase.
 
 
 ## Login and Register Screens:
