@@ -7,4 +7,5 @@ A new Flutter project.
 This project is a starting point for a Flutter application.
 
 ## Login and Register Screens:
-<img src="[https://your-image-url.type](https://user-images.githubusercontent.com/96204940/188313614-8149dd2e-c35d-4522-acc1-f1df5c0ded3c.png)" width="100" height="100">
+<img src="https://user-images.githubusercontent.com/96204940/188313730-58aa50eb-a120-48f2-926c-ae0568efc710.png" width="100" height="100">
+
