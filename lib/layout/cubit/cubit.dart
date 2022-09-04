@@ -32,7 +32,6 @@ class AppCubit extends Cubit<AppStates>
     'At the moment',
     '1 minute before',
     '5 minutes before',
-    'None',
   ];
 
   String? dropDownValue;
@@ -86,7 +85,7 @@ void createTask({
       });
       getTasks().then((value) {
         print(notificationID);
-        if(getNotificationDate(date, time).isAfter(DateTime.now()))
+        if(getNotificationDate(date, time,dropDownValue.toString()).isAfter(DateTime.now()))
        {
          createTaskNotification(
            title: title,
@@ -301,7 +300,8 @@ void removeTask(TaskModel model){
     for(int i =0;i<unCompletedTasks.length;i++){
       DateTime date =  getNotificationDate(
           unCompletedTasks[i].date.toString(),
-          unCompletedTasks[i].time.toString()
+          unCompletedTasks[i].time.toString(),
+          unCompletedTasks[i].notificationStatus.toString()
       );
      if(date.isAfter(DateTime.now())){
        NotificationServices.showScheduleNotification(
@@ -327,19 +327,29 @@ void removeTask(TaskModel model){
       NotificationServices.showScheduleNotification(
           id: notificationID,
           title: title,
-          body: 'You have task to do it now!!',
-          date: getNotificationDate(date, time)
+          body: notificationStatus=='5 minutes before'?
+          'You have task to do it after 5 minutes!'
+              :notificationStatus=='1 minute before'?'You have task to do it after 1 minute!'
+              :'You have task to do it now!!',
+          date: getNotificationDate(date, time,notificationStatus)
       );
   }
 
-  DateTime getNotificationDate(String date, String time){
-    final DateTime dateTime = DateTime(
-      DateTime.parse(date).year,
-      DateTime.parse(date).month,
-      DateTime.parse(date).day,
-      DateFormat.jm().parse(time).hour,
+  DateTime getNotificationDate(String date, String time,String notificationStatus){
+    DateTime dateTime = DateTime(
+        DateTime.parse(date).year,
+        DateTime.parse(date).month,
+        DateTime.parse(date).day,
+        DateFormat.jm().parse(time).hour,
         DateFormat.jm().parse(time).minute
     );
+    if (notificationStatus=='1 minute before'){
+      dateTime = dateTime.subtract(Duration(minutes: 1));
+    }
+    else if(notificationStatus=='5 minutes before'){
+      dateTime = dateTime.subtract(Duration(minutes: 5));
+    }
+    print(dateTime);
     return dateTime;
   }
 }

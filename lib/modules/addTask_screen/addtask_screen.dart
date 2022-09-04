@@ -126,12 +126,10 @@ class AddTaskScreen extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.96),
+                        color: Colors.grey.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(15),
-                        boxShadow: [const BoxShadow(
-                          spreadRadius: 0.2,
-                          blurRadius: 0.2,
-                        )]
+                        border: Border.all(
+                            color: Colors.grey, style: BorderStyle.solid, width: 0.80),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 12.0,right:5),
