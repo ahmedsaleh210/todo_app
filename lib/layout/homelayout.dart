@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:todo_app/modules/addTask_screen/addtask_screen.dart';
-import 'package:todo_app/modules/search_screen/search_screen.dart';
+import 'package:todo_app/modules/addtask/addtask_screen.dart';
 import 'package:todo_app/modules/uncompleted_tasks/uncompleted_tasks.dart';
-import 'package:todo_app/modules/schedule_screen/schedule_screen.dart';
 import 'package:todo_app/modules/tasks/tasks.dart';
 import 'package:todo_app/shared/widgets/buttons.dart';
 import 'package:todo_app/shared/widgets/components.dart';
 import '../modules/done_tasks/donetasks.dart';
+import '../modules/schedule/schedule_screen.dart';
+import '../modules/search/search_screen.dart';
 import '../modules/signin/signin_screen.dart';
 import '../shared/local/shared_preferences.dart';
 import 'cubit/cubit.dart';
@@ -296,8 +296,7 @@ class HomeLayout extends StatelessWidget
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),),
-                  primary: Theme.of(context).floatingActionButtonTheme.backgroundColor
+                  borderRadius: BorderRadius.circular(25.0),), backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor
                 ),
                 onPressed: () {
                   navigateTo(context, AddTaskScreen());
